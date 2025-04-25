@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Ketika EditText dalam keadaan fokus -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/>
+            <size android:height="2dp"/>
+            <stroke android:width="2dp" android:color="#59359B"/> <!-- Warna garis bawah saat fokus -->
+        </shape>
+    </item>
+
+    <!-- Ketika EditText tidak dalam keadaan fokus -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/>
+            <size android:height="2dp"/>
+            <stroke android:width="2dp" android:color="#C3C3C5"/> <!-- Warna garis bawah default -->
+        </shape>
+    </item>
+</selector>

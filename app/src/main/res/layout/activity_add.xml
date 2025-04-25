@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="849dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="46dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/circle_shape"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.045"
+                app:srcCompat="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/redrose_regular"
+                android:text="Hi Fulxas"
+                android:textColor="#FCFFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView12"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-8dp"
+                android:fontFamily="@font/redrose_regular"
+                android:text="History Transaksi"
+                android:textColor="#C18CFA"
+                app:layout_constraintStart_toEndOf="@+id/imageView12"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="330dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/blur_background"
+                android:contentDescription="Tombol Menu"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/humberger_menu" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:background="@drawable/blur_background">
+
+            <Button
+                android:id="@+id/btnPendapatan"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:text="Pendapatan"
+                android:textColor="@color/white"
+                android:background="@drawable/button_pendapatan"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btnPengeluaran"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_height="50dp"
+                android:text="Pengeluaran"
+                android:textColor="@color/white"
+                android:background="@drawable/button_pengeluaran"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:padding="20dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:background="@drawable/blur_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Kategori"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/spinnerKategori"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_background"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Rekening"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/spinnerRekening"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_background"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Nominal"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etJumlah"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_background"
+                android:hint="Rp. 000000"
+                android:inputType="numberDecimal"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <!-- Layout untuk Tanggal dan Waktu dalam satu baris -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Tanggal"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/etTanggal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/input_background"
+                        android:hint="Pilih Tanggal"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="1dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Waktu"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/etWaktu"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/input_background"
+                        android:hint="Pilih Waktu"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Notes"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etNotes"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/input_background"
+                android:gravity="top"
+                android:hint="Masukkan catatan..."
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Save"
+                android:textStyle="bold"
+                android:background="@drawable/button_gradient"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+
+
+        <include
+            android:id="@+id/bottom_nav"
+            layout="@layout/bottom_nav"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

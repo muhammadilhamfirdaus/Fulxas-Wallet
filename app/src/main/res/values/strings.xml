@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FULXAS</string>
+        <string name="pendapatan">Pendapatan</string>
+        <string name="pengeluaran">Pengeluaran</string>
+</resources>
