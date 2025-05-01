@@ -29,6 +29,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.RegisterActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.HomeActivity"
             android:exported="false" />
 
@@ -46,6 +50,10 @@
 
         <activity
             android:name=".ui.GrafikActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ViewAllActivity"
             android:exported="false" />
     </application>
 </manifest>

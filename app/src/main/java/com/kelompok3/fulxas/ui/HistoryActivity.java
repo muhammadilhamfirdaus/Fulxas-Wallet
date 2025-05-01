@@ -1,33 +1,46 @@
 package com.kelompok3.fulxas.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kelompok3.fulxas.R;
 import com.kelompok3.fulxas.adapters.TransaksiAdapter;
 import com.kelompok3.fulxas.models.Transaksi;
-import com.kelompok3.fulxas.network.VolleySingleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
+
+    private TextView tvMonthYear;
+    private int month, year;
+    private final String[] months = {
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    };
+
     RecyclerView recyclerView;
     List<Transaksi> transaksiList;
+    List<Transaksi> allTransaksiList;
     TransaksiAdapter adapter;
 
     @Override
@@ -35,23 +48,56 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        TextView textViewAll = findViewById(R.id.textViewAll);
+
+        // Inisialisasi UI
+        LinearLayout navHome = findViewById(R.id.nav_home);
         LinearLayout navHistory = findViewById(R.id.nav_history);
         FloatingActionButton fab = findViewById(R.id.fab);
         LinearLayout navAi = findViewById(R.id.nav_help);
         LinearLayout navChart = findViewById(R.id.nav_chart);
 
+        tvMonthYear = findViewById(R.id.tvMonthYear);
+        TextView btnPrev = findViewById(R.id.btnPrev);
+        TextView btnNext = findViewById(R.id.btnNext);
+
+        // Setup RecyclerView
+        recyclerView = findViewById(R.id.recyclerView);
+        transaksiList = new ArrayList<>();
+        allTransaksiList = new ArrayList<>();
+        adapter = new TransaksiAdapter(this, transaksiList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        // Ambil bulan dan tahun saat ini
+        Calendar calendar = Calendar.getInstance();
+        month = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+
+        updateDate();
+
+        // Set OnClickListener
+        textViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent untuk memulai ViewAllActivity
+                Intent intent = new Intent(HistoryActivity.this, ViewAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Setup navigasi tombol bawah
+        navHome.setOnClickListener(v -> {
+            Toast.makeText(HistoryActivity.this, "Home Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HistoryActivity.this, HomeActivity.class));
+        });
 
         navHistory.setOnClickListener(v -> {
             Toast.makeText(HistoryActivity.this, "History Clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(HistoryActivity.this, HistoryActivity.class));
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HistoryActivity.this, AddActivity.class));
-            }
-        });
+        fab.setOnClickListener(v -> startActivity(new Intent(HistoryActivity.this, AddActivity.class)));
 
         navAi.setOnClickListener(v -> {
             Toast.makeText(HistoryActivity.this, "AI Clicked", Toast.LENGTH_SHORT).show();
@@ -63,17 +109,34 @@ public class HistoryActivity extends AppCompatActivity {
             startActivity(new Intent(HistoryActivity.this, GrafikActivity.class));
         });
 
-        recyclerView = findViewById(R.id.recyclerView);
-        transaksiList = new ArrayList<>();
-        adapter = new TransaksiAdapter(this, transaksiList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        // Tombol navigasi bulan
+        btnPrev.setOnClickListener(v -> {
+            if (month == 0) {
+                month = 11;
+                year--;
+            } else {
+                month--;
+            }
+            updateDate();
+            filterDataTransaksi();
+        });
+
+        btnNext.setOnClickListener(v -> {
+            if (month == 11) {
+                month = 0;
+                year++;
+            } else {
+                month++;
+            }
+            updateDate();
+            filterDataTransaksi();
+        });
 
         ambilDataTransaksi();
     }
 
     private void ambilDataTransaksi() {
-        String URL = "http://10.0.2.2:8080/fulxas_api/get_transaksi.php"; // ganti IP kamu sesuai server
+        String URL = "http://10.0.2.2:80/fulxas_api/get_transaksi.php"; // Ganti IP kamu sesuai server
 
         StringRequest request = new StringRequest(Request.Method.GET, URL,
                 response -> {
@@ -92,9 +155,9 @@ public class HistoryActivity extends AppCompatActivity {
                                         obj.getDouble("jumlah"),
                                         obj.getString("tipe")
                                 );
-                                transaksiList.add(t);
+                                allTransaksiList.add(t);
                             }
-                            adapter.notifyDataSetChanged();
+                            filterDataTransaksi();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -104,5 +167,24 @@ public class HistoryActivity extends AppCompatActivity {
         );
 
         Volley.newRequestQueue(this).add(request);
+    }
+
+
+    private void filterDataTransaksi() {
+        transaksiList.clear();
+        for (Transaksi t : allTransaksiList) {
+            String[] tanggalParts = t.tanggal.split("-");
+            int tYear = Integer.parseInt(tanggalParts[0]);
+            int tMonth = Integer.parseInt(tanggalParts[1]) - 1; // Karena bulan di Calendar mulai dari 0
+
+            if (tYear == year && tMonth == month) {
+                transaksiList.add(t);
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    private void updateDate() {
+        tvMonthYear.setText(months[month] + " " + year);
     }
 }

@@ -19,10 +19,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kelompok3.fulxas.R;
+
+import org.json.JSONException;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +34,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class AddActivity extends AppCompatActivity {
 
@@ -48,11 +55,17 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        LinearLayout navHome = findViewById(R.id.nav_home);
         LinearLayout navHistory = findViewById(R.id.nav_history);
         FloatingActionButton fab = findViewById(R.id.fab);
         LinearLayout navAi = findViewById(R.id.nav_help);
         LinearLayout navChart = findViewById(R.id.nav_chart);
 
+
+        navHome.setOnClickListener(v -> {
+            Toast.makeText(AddActivity.this, "Home Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(AddActivity.this, HomeActivity.class));
+        });
 
         navHistory.setOnClickListener(v -> {
             Toast.makeText(AddActivity.this, "History Clicked", Toast.LENGTH_SHORT).show();
@@ -173,33 +186,40 @@ public class AddActivity extends AppCompatActivity {
 
     // Method untuk mengirim data ke server menggunakan Volley
     private void submitData() {
-        String kategori = spinnerKategori.getSelectedItem().toString();
-        String tanggal = etTanggal.getText().toString();
-        String waktu = etWaktu.getText().toString();
-        String rekening = spinnerRekening.getSelectedItem().toString();
-        String jumlah = etJumlah.getText().toString();
-        String tipe = currentTipe;
+        final String kategori = spinnerKategori.getSelectedItem().toString();
+        final String tanggalInput = etTanggal.getText().toString();
+        final String waktu = etWaktu.getText().toString();
+        final String rekening = spinnerRekening.getSelectedItem().toString();
+        final String jumlah = etJumlah.getText().toString();
+        final String tipe = currentTipe;
 
-        String url = "http://10.0.2.2:8080/fulxas_api/add_transaksi.php"; // Ganti dengan URL server Anda
+        // Konversi tanggal dari dd/MM/yyyy ke yyyy-MM-dd
+        String tanggal = "";
+        try {
+            SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            SimpleDateFormat toDatabase = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            tanggal = toDatabase.format(fromUser.parse(tanggalInput));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Format tanggal salah", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        String url = "http://10.0.2.2:80/fulxas_api/add_transaksi.php";
+
+        String finalTanggal = tanggal; // Bikin final supaya bisa dipakai di inner class
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(AddActivity.this, "Data berhasil ditambahkan", Toast.LENGTH_SHORT).show();
-                    }
+                response -> {
+                    Toast.makeText(AddActivity.this, "Data berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(AddActivity.this, "Gagal menambahkan data", Toast.LENGTH_SHORT).show();
-                    }
+                error -> {
+                    Toast.makeText(AddActivity.this, "Gagal menambahkan data", Toast.LENGTH_SHORT).show();
                 }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("kategori", kategori);
-                params.put("tanggal", tanggal);
+                params.put("tanggal", finalTanggal); // Kirim tanggal format database
                 params.put("waktu", waktu);
                 params.put("rekening", rekening);
                 params.put("jumlah", jumlah);
@@ -210,5 +230,52 @@ public class AddActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+        ambilKalkulasi();
     }
+    private void ambilKalkulasi() {
+        String url = "http://10.0.2.2:80/fulxas_api/grafik.php"; // Ganti dengan URL server kamu
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                response -> {
+                    Map<String, Float> pendapatanMap = new HashMap<>();
+                    Map<String, Float> pengeluaranMap = new HashMap<>();
+                    float totalPendapatan = 0;
+                    float totalPengeluaran = 0;
+
+                    for (int i = 0; i < response.length(); i++) {
+                        try {
+                            JSONObject obj = response.getJSONObject(i);
+                            String kategori = obj.getString("kategori");
+                            float jumlah = (float) obj.getDouble("total");
+                            String tipe = obj.getString("tipe");
+
+                            if (tipe.equalsIgnoreCase("Pendapatan")) {
+                                pendapatanMap.put(kategori, jumlah);
+                                totalPendapatan += jumlah;
+                            } else {
+                                pengeluaranMap.put(kategori, jumlah);
+                                totalPengeluaran += jumlah;
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    // Pindah ke HomeActivity dan bawa datanya
+                    Intent intent = new Intent(AddActivity.this, HomeActivity.class);
+                    intent.putExtra("totalPendapatan", totalPendapatan);
+                    intent.putExtra("totalPengeluaran", totalPengeluaran);
+                    intent.putExtra("total", totalPendapatan - totalPengeluaran);
+                    startActivity(intent);
+                    finish(); // Jangan lupa untuk menutup AddActivity agar pengguna tidak bisa kembali ke layar ini.
+                },
+                error -> Toast.makeText(this, "Gagal mengambil data", Toast.LENGTH_SHORT).show()
+        );
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
+    }
+
 }

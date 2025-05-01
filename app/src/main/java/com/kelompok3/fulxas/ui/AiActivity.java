@@ -1,13 +1,17 @@
 package com.kelompok3.fulxas.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kelompok3.fulxas.R;
 
 import org.json.JSONArray;
@@ -40,6 +44,40 @@ public class AiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ai);
 
+        LinearLayout navHome = findViewById(R.id.nav_home);
+        LinearLayout navHistory = findViewById(R.id.nav_history);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        LinearLayout navAi = findViewById(R.id.nav_help);
+        LinearLayout navChart = findViewById(R.id.nav_chart);
+
+
+        navHome.setOnClickListener(v -> {
+            Toast.makeText(AiActivity.this, "Home Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(AiActivity.this, HomeActivity.class));
+        });
+
+        navHistory.setOnClickListener(v -> {
+            Toast.makeText(AiActivity.this, "History Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(AiActivity.this, HistoryActivity.class));
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AiActivity.this, AddActivity.class));
+            }
+        });
+
+        navAi.setOnClickListener(v -> {
+            Toast.makeText(AiActivity.this, "AI Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(AiActivity.this, AiActivity.class));
+        });
+
+        navChart.setOnClickListener(v -> {
+            Toast.makeText(AiActivity.this, "Chart Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(AiActivity.this, GrafikActivity.class));
+        });
+
         etUserInput = findViewById(R.id.etUserInput);
         btnSend = findViewById(R.id.btnSend);
         tvChatResponse = findViewById(R.id.tvChatResponse);
@@ -57,7 +95,7 @@ public class AiActivity extends AppCompatActivity {
     }
 
     private void ambilHistoryTransaksi() {
-        String URL = "http://10.0.2.2:8080/fulxas_api/get_transaksi.php"; // Ganti jika IP server kamu beda
+        String URL = "http://10.0.2.2:80/fulxas_api/get_transaksi.php"; // Ganti jika IP server kamu beda
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(URL).build();

@@ -42,11 +42,17 @@ public class GrafikActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grafik);
 
+        LinearLayout navHome = findViewById(R.id.nav_home);
         LinearLayout navHistory = findViewById(R.id.nav_history);
         FloatingActionButton fab = findViewById(R.id.fab);
         LinearLayout navAi = findViewById(R.id.nav_help);
         LinearLayout navChart = findViewById(R.id.nav_chart);
 
+
+        navHome.setOnClickListener(v -> {
+            Toast.makeText(GrafikActivity.this, "Home Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(GrafikActivity.this, HomeActivity.class));
+        });
 
         navHistory.setOnClickListener(v -> {
             Toast.makeText(GrafikActivity.this, "History Clicked", Toast.LENGTH_SHORT).show();
@@ -80,7 +86,7 @@ public class GrafikActivity extends AppCompatActivity {
     }
 
     private void ambilDataTransaksi() {
-        String url = "http://10.0.2.2:8080/fulxas_api/grafik.php"; // Ganti dengan URL server kamu
+        String url = "http://10.0.2.2:80/fulxas_api/grafik.php"; // Ganti dengan URL server kamu
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 response -> {
@@ -143,7 +149,7 @@ public class GrafikActivity extends AppCompatActivity {
         chart.setTransparentCircleRadius(50f);
         chart.setCenterText(label);
         chart.setCenterTextSize(14f);
-        chart.setEntryLabelColor(Color.BLACK);
+        chart.setEntryLabelColor(Color.WHITE);
         chart.getDescription().setEnabled(false);
         chart.invalidate(); // Refresh chart
     }

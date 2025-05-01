@@ -55,7 +55,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="-8dp"
                 android:fontFamily="@font/redrose_regular"
-                android:text="History Transaksi"
+                android:text="Add Transaksi"
                 android:textColor="#C18CFA"
                 app:layout_constraintStart_toEndOf="@+id/imageView12"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -82,7 +82,7 @@
             android:layout_height="70dp"
             android:orientation="horizontal"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:background="@drawable/blur_background">
@@ -94,6 +94,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:text="Pendapatan"
+                android:fontFamily="@font/redrose_regular"
                 android:textColor="@color/white"
                 android:background="@drawable/button_pendapatan"
                 android:textStyle="bold"/>
@@ -109,6 +110,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_height="50dp"
                 android:text="Pengeluaran"
+                android:fontFamily="@font/redrose_regular"
                 android:textColor="@color/white"
                 android:background="@drawable/button_pengeluaran"
                 android:textStyle="bold"/>
@@ -119,8 +121,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:padding="20dp"
+            android:layout_marginTop="5dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="13dp"
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:background="@drawable/blur_background">
@@ -130,13 +133,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Kategori"
+                android:fontFamily="@font/redrose_regular"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <Spinner
                 android:id="@+id/spinnerKategori"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:background="@drawable/input_background"
                 android:padding="10dp" />
 
@@ -146,13 +150,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:text="Rekening"
+                android:fontFamily="@font/redrose_regular"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <Spinner
                 android:id="@+id/spinnerRekening"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:background="@drawable/input_background"
                 android:padding="10dp" />
 
@@ -162,13 +167,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:text="Nominal"
+                android:fontFamily="@font/redrose_regular"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/etJumlah"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:background="@drawable/input_background"
                 android:hint="Rp. 000000"
                 android:inputType="numberDecimal"
@@ -194,15 +200,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:text="Tanggal"
+                        android:fontFamily="@font/redrose_regular"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/etTanggal"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="45dp"
                         android:background="@drawable/input_background"
                         android:hint="Pilih Tanggal"
+                        android:fontFamily="@font/redrose_regular"
                         android:focusable="false"
                         android:clickable="true"
                         android:padding="10dp"
@@ -225,16 +233,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:text="Waktu"
+                        android:fontFamily="@font/redrose_regular"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/etWaktu"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="45dp"
                         android:background="@drawable/input_background"
                         android:hint="Pilih Waktu"
                         android:focusable="false"
+                        android:fontFamily="@font/redrose_regular"
                         android:clickable="true"
                         android:padding="10dp"
                         android:textColor="@color/white"
@@ -254,12 +264,13 @@
             <EditText
                 android:id="@+id/etNotes"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:background="@drawable/input_background"
                 android:gravity="top"
                 android:hint="Masukkan catatan..."
                 android:inputType="textMultiLine"
                 android:padding="10dp"
+                android:fontFamily="@font/redrose_regular"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
 
@@ -269,6 +280,7 @@
                 android:layout_height="50dp"
                 android:text="Save"
                 android:textStyle="bold"
+                android:fontFamily="@font/redrose_regular"
                 android:background="@drawable/button_gradient"
                 android:textColor="@color/white"
                 android:layout_marginTop="20dp"/>

@@ -58,7 +58,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="-8dp"
                 android:fontFamily="@font/redrose_regular"
-                android:text="History Transaksi"
+                android:text="View All History Transaksi"
                 android:textColor="#C18CFA"
                 app:layout_constraintStart_toEndOf="@+id/imageView12"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -79,62 +79,6 @@
                 app:srcCompat="@drawable/humberger_menu" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <!-- Navigasi Bulan -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="start">
-
-                <TextView
-                    android:id="@+id/btnPrev"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="&lt;"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white"
-                    android:padding="10dp"/>
-
-                <TextView
-                    android:id="@+id/tvMonthYear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Februari"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white"
-                    android:padding="10dp"/>
-
-                <TextView
-                    android:id="@+id/btnNext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="&gt;"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/white"
-                    android:padding="10dp"/>
-            </LinearLayout>
-
-            <!-- TextView View All di kanan -->
-            <TextView
-                android:id="@+id/textViewAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:padding="10dp"/>
-        </LinearLayout>
 
 
         <!-- RecyclerView -->

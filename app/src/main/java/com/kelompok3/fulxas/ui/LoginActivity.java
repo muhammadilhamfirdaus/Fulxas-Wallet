@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +28,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText edtEmail, edtPassword;
     private Button btnLogin;
-    private static final String LOGIN_URL = "http://10.0.2.2:8080/fulxas_api/login.php"; // Ganti dengan URL API Anda
+    private ImageButton btnBack;
+    private TextView txtSignUp;
+    private static final String LOGIN_URL = "http://10.0.2.2:80/fulxas_api/login.php"; // Ganti dengan URL API Anda
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,33 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+
+        btnBack = findViewById(R.id.btnBack);
+        txtSignUp = findViewById(R.id.txtSignUp);
+
+        txtSignUp.setText(android.text.Html.fromHtml(
+                "Don't have an account? <font color='#2196F3'>Sign Up</font>"
+        ));
+
+
+        // Tombol back kembali ke MainActivity
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backIntent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(backIntent);
+                finish(); // Tutup LoginActivity biar tidak bisa tekan tombol back ke sini
+            }
+        });
+
+        // Teks Sign Up pergi ke RegisterActivity
+        txtSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerIntent);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

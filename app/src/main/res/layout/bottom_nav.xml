@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Home"
             android:textColor="@android:color/white"
+            android:fontFamily="@font/redrose_regular"
             android:textSize="12sp"/>
     </LinearLayout>
 
@@ -51,6 +52,7 @@
             android:layout_height="wrap_content"
             android:text="History"
             android:textColor="@android:color/white"
+            android:fontFamily="@font/redrose_regular"
             android:textSize="12sp"/>
     </LinearLayout>
 
@@ -83,6 +85,7 @@
             android:layout_height="wrap_content"
             android:text="Chart"
             android:textColor="@android:color/white"
+            android:fontFamily="@font/redrose_regular"
             android:textSize="12sp"/>
     </LinearLayout>
 
@@ -98,13 +101,14 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/home"/>
+            android:src="@drawable/ai"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Help"
+            android:text="AI"
             android:textColor="@android:color/white"
+            android:fontFamily="@font/redrose_regular"
             android:textSize="12sp"/>
     </LinearLayout>
 

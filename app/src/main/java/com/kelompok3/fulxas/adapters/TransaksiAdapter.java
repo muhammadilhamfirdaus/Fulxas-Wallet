@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,9 +41,20 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
     @Override
     public void onBindViewHolder(TransaksiAdapter.ViewHolder holder, int position) {
         Transaksi t = list.get(position);
+
         holder.kategori.setText(t.kategori);
         holder.tanggal.setText(t.tanggal + " " + t.waktu);
-        holder.jumlah.setText("Rp " + String.format("%.2f", t.jumlah));
+
+        // Set jumlah dan warnakan sesuai tipe transaksi
+        double jumlah = t.jumlah;
+        if (t.tipe.equalsIgnoreCase("Pemasukan")) {
+            holder.jumlah.setText("+ Rp " + String.format("%.2f", jumlah));
+            holder.jumlah.setTextColor(context.getResources().getColor(R.color.green)); // Hijau
+        } else if (t.tipe.equalsIgnoreCase("Pengeluaran")) {
+            holder.jumlah.setText("- Rp " + String.format("%.2f", jumlah));
+            holder.jumlah.setTextColor(context.getResources().getColor(R.color.red)); // Merah
+        }
+
         holder.tipe.setText(t.tipe);
     }
 

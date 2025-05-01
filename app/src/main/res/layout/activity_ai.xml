@@ -48,7 +48,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="-8dp"
             android:fontFamily="@font/redrose_regular"
-            android:text="Laporan Keuangan"
+            android:text="Ai"
             android:textColor="#C18CFA"
             app:layout_constraintStart_toEndOf="@id/imageView12"
             app:layout_constraintTop_toBottomOf="@id/textView" />
