@@ -59,7 +59,7 @@
 - **UI Framework:** XML Layout + Material Design
 - **API Eksternal:** REST API untuk berita ekonomi global & model AI lokal untuk analisis keuangan
 
-## 📸 Screenshot Antarmuka
+## 📸 StoryBoard
 
 Berikut beberapa tampilan dari aplikasi Fulxas:
 
