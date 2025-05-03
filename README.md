@@ -8,7 +8,7 @@
   Catat semua pemasukan dan pengeluaran secara efisien.
 
 - 🧠 **Analisis Keuangan Berbasis AI**  
-  Evaluasi kondisi keuangan pribadi Anda melalui algoritma cerdas.
+  AI Chat Bot Untuk Analisa valuasi kondisi keuangan pribadi Anda melalui algoritma cerdas.
 
 - 💡 **Rekomendasi Keuangan Pintar**  
   Dapatkan saran finansial berdasarkan kebiasaan dan histori Anda.
