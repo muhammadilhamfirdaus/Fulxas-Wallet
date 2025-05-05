@@ -59,7 +59,7 @@
 - **UI Framework:** XML Layout + Material Design
 - **API Eksternal:** REST API untuk berita ekonomi global & model AI lokal untuk analisis keuangan
 
-## 📸 StoryBoard
+## 📸 UI/UX
 
 Berikut beberapa tampilan dari aplikasi Fulxas:
 
@@ -84,6 +84,73 @@ Berikut beberapa tampilan dari aplikasi Fulxas:
   - **Alisya Katsulya Tsaukani**  
   Pengembang UI/UX proyek Fulxas.
 
+
+# 📆 Fulxas — Storyboard Timeline Proyek (2025)
+
+**Periode Proyek:**  
+🗓 24 Februari 2025 – 25 Juni 2025 (4 bulan)
+
+Fulxas adalah aplikasi manajemen keuangan Android berbasis AI. Berikut ini adalah tahapan lengkap pengembangan dari awal perencanaan hingga rilis final.
+
+---
+
+## 🧭 Fase 1: Pra Development (Perancangan)  
+📅 **24 Februari – 3 maret 2025**
+
+| Tanggal        | Task                                                                 |
+|----------------|----------------------------------------------------------------------|
+| 24–25 Feb      | Kickoff meeting, identifikasi fitur utama & user persona            |
+| 26–29 Feb      | Desain wireframe (Flowchart aplikasi)                                   |
+| 1–3 Maret      | Perancangan database    |
+
+---
+
+## ⚙️ Fase 2: Design and Development
+📅 **04 Maret - 27 april**
+
+| Tanggal       | Task                                                               |
+|---------------|--------------------------------------------------------------------|
+| 04 - 18 maret | Pembuatan UI/UX (Setelan figma,komponen,all page)           |
+| 18 maret - 24 april | FRONTEND (pembuatan all page menggunakan android studio) |
+| 18 Maret- 24 april | Backend (logika transaksi,database,api dan function)  |
+| 24 - 27 april | Testing transaksi untuk upload UTS              |
+
+---
+
+## 💻 Fase 3: Fitur dan Improve
+📅 **28 april - 23 Juni**
+
+| Tanggal          | Task                                                              |
+|------------------|-------------------------------------------------------------------|
+| 28 aril - 2 mei  | Pembuatan Fitur CHART (UI&UX , FRONTEND , BACKEND)
+| 2 - 12 mei       | Pembuatan fitur AI (UI/UX , FRONTEND , BACKEND)     |
+| 12-19 mei        | Pembuatan fitur Berita/News Ekonomi Internasioal (UI/UX , FRONTEND, BACKEND)
+| 19 mei - 23 juni | (Penambahan Fitur baru, sesuai dengan perkembangan)
+---
+
+## 🤖 Fase 4 : Testing, Finishing, dan Submit UAS
+📅 **23 – 27 juni 2025**
+
+| Tanggal       | Task                                                               |
+|---------------|--------------------------------------------------------------------|
+| 23-25 juni    | Finishing Aplikasi                                 |
+| 25-26 juni    | Testing Unit                                   |
+| 27 JUNI       |  Submit UAS                  |
+
+
+-
+
+## 📌 Output Akhir
+
+- ✅ APK final siap pakai  
+- ✅ Source code terdokumentasi  
+- ✅ Dokumentasi teknis & user guide  
+- ✅ Aplikasi siap untuk iterasi fitur lanjutan (target keuangan, budget bulanan, dsb)
+
+---
+
+Terima kasih telah mengikuti timeline pengembangan Fulxas! 🚀  
+Bantu kami tumbuh lebih baik melalui kontribusi dan masukan Anda.  
 ## 🤝 Kontribusi
 
 Kami terbuka untuk kontribusi dari developer lain. Jika Anda ingin membantu pengembangan Fulxas:
