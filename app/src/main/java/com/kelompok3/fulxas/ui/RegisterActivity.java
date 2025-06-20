@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageButton btnBack;
     private TextView txtSignIn;
 
-    String URL = "http://10.0.2.2:80/fulxas_api/register.php";
+    String URL = "http://10.0.2.2:8080/fulxas_api/register.php";
 
 
     @Override

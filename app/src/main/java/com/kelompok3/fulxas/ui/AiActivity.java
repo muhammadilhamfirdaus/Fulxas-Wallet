@@ -95,7 +95,7 @@ public class AiActivity extends AppCompatActivity {
     }
 
     private void ambilHistoryTransaksi() {
-        String URL = "http://10.0.2.2:80/fulxas_api/get_transaksi.php"; // Ganti jika IP server kamu beda
+        String URL = "http://10.0.2.2:8080/fulxas_api/get_transaksi.php"; // Ganti jika IP server kamu beda
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(URL).build();

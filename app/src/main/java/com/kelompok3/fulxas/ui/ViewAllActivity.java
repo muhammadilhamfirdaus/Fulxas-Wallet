@@ -84,7 +84,7 @@ public class ViewAllActivity extends AppCompatActivity{
     }
 
     private void ambilDataTransaksi() {
-        String URL = "http://10.0.2.2:80/fulxas_api/get_transaksi.php"; // ganti IP kamu sesuai server
+        String URL = "http://10.0.2.2:8080/fulxas_api/get_transaksi.php"; // ganti IP kamu sesuai server
 
         StringRequest request = new StringRequest(Request.Method.GET, URL,
                 response -> {
@@ -100,7 +100,7 @@ public class ViewAllActivity extends AppCompatActivity{
                                         obj.getString("tanggal"),
                                         obj.getString("waktu"),
                                         obj.getString("rekening"),
-                                        obj.getDouble("jumlah"),
+                                        Double.parseDouble(obj.getString("jumlah")),
                                         obj.getString("tipe")
                                 );
                                 transaksiList.add(t);

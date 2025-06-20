@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp">
+            android:paddingVertical="5dp">
 
             <LinearLayout
                 android:id="@+id/layoutRingkasanWrapper"
@@ -105,18 +105,18 @@
                         android:id="@+id/txtPendapatan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/redrose_regular"
+                        android:fontFamily="@font/redrose_bold"
                         android:text="Pendapatan: 0"
-                        android:textColor="#05FF05"
+                        android:textColor="#94D994"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/txtPengeluaran"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/redrose_regular"
+                        android:fontFamily="@font/redrose_bold"
                         android:text="Pengeluaran: 0"
-                        android:textColor="#F81A1A"
+                        android:textColor="#D07A7A"
                         android:textSize="16sp" />
 
                     <TextView
@@ -134,7 +134,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="10dp"
                 android:text="Pendapatan"
                 android:textColor="#F2EDED"
                 android:textStyle="bold" />
@@ -143,13 +143,13 @@
                 android:id="@+id/chartPendapatan"
                 android:background="@drawable/blur_background"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="210dp"
                 android:layout_marginTop="8dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:text="Pengeluaran"
                 android:textColor="#F8F2F2"
                 android:textStyle="bold" />
@@ -158,7 +158,7 @@
                 android:id="@+id/chartPengeluaran"
                 android:background="@drawable/blur_background"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="210dp"
                 android:layout_marginTop="8dp" />
         </LinearLayout>
     </ScrollView>

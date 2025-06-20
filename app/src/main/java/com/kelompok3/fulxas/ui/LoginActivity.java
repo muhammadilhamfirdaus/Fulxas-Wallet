@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private ImageButton btnBack;
     private TextView txtSignUp;
-    private static final String LOGIN_URL = "http://10.0.2.2:80/fulxas_api/login.php"; // Ganti dengan URL API Anda
+    private static final String LOGIN_URL = "http://10.0.2.2:8080/fulxas_api/login.php"; // Ganti dengan URL API Anda
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

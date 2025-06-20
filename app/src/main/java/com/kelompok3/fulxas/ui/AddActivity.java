@@ -205,7 +205,7 @@ public class AddActivity extends AppCompatActivity {
             return;
         }
 
-        String url = "http://10.0.2.2:80/fulxas_api/add_transaksi.php";
+        String url = "http://10.0.2.2:8080/fulxas_api/add_transaksi.php";
 
         String finalTanggal = tanggal; // Bikin final supaya bisa dipakai di inner class
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -234,7 +234,7 @@ public class AddActivity extends AppCompatActivity {
         ambilKalkulasi();
     }
     private void ambilKalkulasi() {
-        String url = "http://10.0.2.2:80/fulxas_api/grafik.php"; // Ganti dengan URL server kamu
+        String url = "http://10.0.2.2:8080/fulxas_api/grafik.php"; // Ganti dengan URL server kamu
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 response -> {

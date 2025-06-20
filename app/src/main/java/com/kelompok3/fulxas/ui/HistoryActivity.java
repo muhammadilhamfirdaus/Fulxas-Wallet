@@ -136,7 +136,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private void ambilDataTransaksi() {
-        String URL = "http://10.0.2.2:80/fulxas_api/get_transaksi.php"; // Ganti IP kamu sesuai server
+        String URL = "http://10.0.2.2:8080/fulxas_api/get_transaksi.php"; // Ganti IP kamu sesuai server
 
         StringRequest request = new StringRequest(Request.Method.GET, URL,
                 response -> {

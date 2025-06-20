@@ -1,6 +1,7 @@
 package com.kelompok3.fulxas.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,21 +43,31 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
     public void onBindViewHolder(TransaksiAdapter.ViewHolder holder, int position) {
         Transaksi t = list.get(position);
 
+        Log.d("TransaksiAdapter", "Tipe: " + t.tipe);
+
         holder.kategori.setText(t.kategori);
         holder.tanggal.setText(t.tanggal + " " + t.waktu);
 
-        // Set jumlah dan warnakan sesuai tipe transaksi
+
         double jumlah = t.jumlah;
-        if (t.tipe.equalsIgnoreCase("Pemasukan")) {
+
+        String tipe = t.tipe.trim().toLowerCase();
+
+        if (tipe.equals("pendapatan")) {
             holder.jumlah.setText("+ Rp " + String.format("%.2f", jumlah));
-            holder.jumlah.setTextColor(context.getResources().getColor(R.color.green)); // Hijau
-        } else if (t.tipe.equalsIgnoreCase("Pengeluaran")) {
+            holder.jumlah.setTextColor(context.getResources().getColor(R.color.green));
+        } else if (tipe.equals("pengeluaran")) {
             holder.jumlah.setText("- Rp " + String.format("%.2f", jumlah));
-            holder.jumlah.setTextColor(context.getResources().getColor(R.color.red)); // Merah
+            holder.jumlah.setTextColor(context.getResources().getColor(R.color.red));
+        } else {
+            holder.jumlah.setText("Rp " + String.format("%.2f", jumlah));
+            holder.jumlah.setTextColor(context.getResources().getColor(R.color.black));
         }
 
         holder.tipe.setText(t.tipe);
     }
+
+
 
     @Override
     public int getItemCount() {

@@ -15,6 +15,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kelompok3.fulxas.R;
+import android.widget.ImageButton;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,6 +27,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView tvMonthYear;
     private int month, year;
+
+    ImageButton imageButton2;
     private final String[] months = {
             "Januari", "Februari", "Maret", "April", "Mei", "Juni",
             "Juli", "Agustus", "September", "Oktober", "November", "Desember"
@@ -41,9 +45,19 @@ public class HomeActivity extends AppCompatActivity {
         LinearLayout navAi = findViewById(R.id.nav_help);
         LinearLayout navChart = findViewById(R.id.nav_chart);
 
+        imageButton2 = findViewById(R.id.imageButton2);
+
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         navHome.setOnClickListener(v -> {
             Toast.makeText(HomeActivity.this, "Home Clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+            startActivity(new Intent(HomeActivity.this, NewsActivity.class));
         });
 
         navHistory.setOnClickListener(v -> {
@@ -108,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void getKalkulasiData(TextView textPendapatan, TextView textPengeluaran, TextView textTotal) {
-        String url = "http://10.0.2.2:80/fulxas_api/kalkulasi.php"; // GANTI IP sesuai alamat server lokal atau hosting kamu
+        String url = "http://10.0.2.2:8080/fulxas_api/kalkulasi.php"; // GANTI IP sesuai alamat server lokal atau hosting kamu
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
